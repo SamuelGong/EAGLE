@@ -168,6 +168,11 @@ output_ids=model.eagenerate(input_ids,temperature=0.5,max_new_tokens=512)
 output=model.tokenizer.decode(output_ids[0])
 ```
 
+**Zhifeng**: For example, run 
+```
+python inference.py
+```
+
 **_Note: Vicuna, LLaMA2-Chat, and LLaMA3-Instruct are both chat models. You need to use the correct chat template, otherwise it will cause abnormal output from the model and affect the performance of EAGLE._**
 
 
@@ -215,6 +220,15 @@ python -m eagle.evaluation.gen_baseline_answer_vicuna\
 		 --base-model-path [path of the original model]\
 ```
 The above two commands will each generate a .jsonl file that records the generation results and wall time. Then, you can use evaluation/speed.py to calculate the ratio of speeds.
+
+**Zhifeng**: For example, run
+
+```
+python -m eagle.evaluation.gen_ea_answer_vicuna --ea-model-path=yuhuili/EAGLE-Vicuna-7B-v1.3 --base-model-path=lmsys/vicuna-7b-v1.3
+python -m eagle.evaluation.gen_baseline_answer_vicuna --ea-model-path=yuhuili/EAGLE-Vicuna-7B-v1.3 --base-model-path=lmsys/vicuna-7b-v1.3
+python eagle/evaluation/speed.py lmsys/vicuna-7b-v1.3 mt_bench/ess-vicuna-70b-fp16-temperature-1.0.jsonl mt_bench/ess-vicuna-70b-fp16-baseline-temperature-1.0.jsonl
+# And the final output should be similar to ratio 2.449893714541732
+```
 
 ## 🌟 Our Contributors
 
