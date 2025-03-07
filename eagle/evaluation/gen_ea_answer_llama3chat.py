@@ -220,6 +220,7 @@ def get_model_answers(
             idxs = []
             new_tokens = []
             wall_time = []
+            accept_lengths_list = []
             for j in range(len(question["turns"])):
                 qs = question["turns"][j]
                 messages.append({
@@ -237,7 +238,7 @@ def get_model_answers(
                 torch.cuda.synchronize()
                 start_time = time.time()
 
-                output_ids, new_token, idx = model.eagenerate(
+                output_ids, new_token, idx, accept_lengths = model.eagenerate(
                     torch.as_tensor(input_ids).cuda(),
                     temperature=temperature,
                     log=True,
@@ -280,12 +281,13 @@ def get_model_answers(
                 idxs.append(int(idx))
                 new_tokens.append(int(new_token))
                 wall_time.append(total_time)
+                accept_lengths_list.append(accept_lengths)
                 messages.append({
                     "role": "assistant",
                     "content": output
                 })
             # torch.cuda.empty_cache()
-            choices.append({"index": i, "turns": turns, "idxs": idxs, "new_tokens": new_tokens, "wall_time": wall_time})
+            choices.append({"index": i, "turns": turns, "idxs": idxs, "new_tokens": new_tokens, "wall_time": wall_time, "accept_lengths": accept_lengths_list})
 
         # Dump answers
         os.makedirs(os.path.dirname(answer_file), exist_ok=True)
@@ -403,7 +405,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    args.model_id = args.model_id + "-temperature-" + str(args.temperature)
+    args.model_id = (args.model_id
+                     + "-t-" + str(args.temperature)
+                     + "-h-" + str(args.depth)
+                     + "-k-" + str(args.top_k)
+                     + "-m-" + str(args.total_token))
     if args.num_gpus_total // args.num_gpus_per_model > 1:
         import ray
 
