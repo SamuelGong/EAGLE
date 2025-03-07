@@ -239,6 +239,7 @@ class EaModel(nn.Module):
             input_ids, self, past_key_values, logits_processor
         )
         new_token = 0
+        accept_lengths = []
 
         for idx in range(max_length):
             #with Timer("all"):
@@ -277,6 +278,7 @@ class EaModel(nn.Module):
                 hidden_state_new,
                 sample_p
             )
+            accept_lengths.append(accept_length)
 
             if is_llama3:
                 if stop_token_id in input_ids[0, input_len:].tolist():
@@ -291,7 +293,7 @@ class EaModel(nn.Module):
         if not log:
             return input_ids
         else:
-            return input_ids, new_token, idx
+            return input_ids, new_token, idx, accept_lengths
 
 
     @torch.no_grad()
