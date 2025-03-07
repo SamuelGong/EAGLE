@@ -278,7 +278,7 @@ class EaModel(nn.Module):
                 hidden_state_new,
                 sample_p
             )
-            accept_lengths.append(accept_length)
+            accept_lengths.append(int(accept_length))
 
             if is_llama3:
                 if stop_token_id in input_ids[0, input_len:].tolist():
