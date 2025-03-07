@@ -136,6 +136,7 @@ def get_model_answers(
         idxs = []
         new_tokens = []
         wall_time = []
+        accept_lengths_list = []
         for j in range(len(question["turns"])):
             qs = question["turns"][j]
             messages.append({
@@ -153,7 +154,7 @@ def get_model_answers(
             torch.cuda.synchronize()
             start_time = time.time()
 
-            output_ids, new_token, idx = model.eagenerate(
+            output_ids, new_token, idx, accept_lengths = model.eagenerate(
                 torch.as_tensor(input_ids).cuda(),
                 temperature=temperature,
                 log=True,
@@ -198,6 +199,7 @@ def get_model_answers(
             idxs.append(int(idx))
             new_tokens.append(int(new_token))
             wall_time.append(total_time)
+            accept_lengths_list.append(accept_lengths)
             messages.append({
                 "role": "assistant",
                 "content": output
