@@ -369,7 +369,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    args.model_id = args.model_id + "-temperature-" + str(args.temperature)
+    args.model_id = (args.model_id
+                     + "-t-" + str(args.temperature)
+                     + "-h-" + str(args.depth)
+                     + "-k-" + str(args.top_k)
+                     + "-m-" + str(args.total_token))
     if args.num_gpus_total // args.num_gpus_per_model > 1:
         import ray
 
