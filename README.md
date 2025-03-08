@@ -237,6 +237,10 @@ python eagle/evaluation/speed.py lmsys/vicuna-7b-v1.3 mt_bench/ess-vicuna-70b-fp
 python plot.py mt_bench vicuna-7b-fp16 h
 python plot.py mt_bench vicuna-7b-fp16 k
 python plot.py mt_bench vicuna-7b-fp16 m
+# the default value for t in plot.py is 1.0, so need specifying
+python plot.py mt_bench llama38b2_40 h --t=0.0
+python plot.py mt_bench llama38b2_40 k --t=0.0
+python plot.py mt_bench llama38b2_40 m --t=0.0
 ```
 
 ## 🌟 Our Contributors
