@@ -226,7 +226,7 @@ The above two commands will each generate a .jsonl file that records the generat
 ```
 python -m eagle.evaluation.gen_ea_answer_vicuna --ea-model-path=yuhuili/EAGLE-Vicuna-7B-v1.3 --base-model-path=lmsys/vicuna-7b-v1.3
 python -m eagle.evaluation.gen_baseline_answer_vicuna --ea-model-path=yuhuili/EAGLE-Vicuna-7B-v1.3 --base-model-path=lmsys/vicuna-7b-v1.3
-python eagle/evaluation/speed.py lmsys/vicuna-7b-v1.3 mt_bench/ess-vicuna-70b-fp16-temperature-1.0.jsonl mt_bench/ess-vicuna-70b-fp16-baseline-temperature-1.0.jsonl
+python eagle/evaluation/speed.py lmsys/vicuna-7b-v1.3 mt_bench/vicuna-7b-fp16-temperature-1.0.jsonl mt_bench/vicuna-7b-fp16-baseline-temperature-1.0.jsonl
 # And the final output should be similar to ratio 2.449893714541732
 ```
 
