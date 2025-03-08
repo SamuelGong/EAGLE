@@ -169,7 +169,8 @@ output=model.tokenizer.decode(output_ids[0])
 ```
 
 **Zhifeng**: For example, run 
-```
+
+```bash
 python inference.py
 ```
 
@@ -223,11 +224,23 @@ The above two commands will each generate a .jsonl file that records the generat
 
 **Zhifeng**: For example, run
 
-```
+```bash
 python -m eagle.evaluation.gen_ea_answer_vicuna --ea-model-path=yuhuili/EAGLE-Vicuna-7B-v1.3 --base-model-path=lmsys/vicuna-7b-v1.3
 python -m eagle.evaluation.gen_baseline_answer_vicuna --ea-model-path=yuhuili/EAGLE-Vicuna-7B-v1.3 --base-model-path=lmsys/vicuna-7b-v1.3
 python eagle/evaluation/speed.py lmsys/vicuna-7b-v1.3 mt_bench/vicuna-7b-fp16-temperature-1.0.jsonl mt_bench/vicuna-7b-fp16-baseline-temperature-1.0.jsonl
 # And the final output should be similar to ratio 2.449893714541732
+```
+
+**Zhifeng**: For sensitivity analysi, run things like
+
+```bash
+python plot.py mt_bench vicuna-7b-fp16 h
+python plot.py mt_bench vicuna-7b-fp16 k
+python plot.py mt_bench vicuna-7b-fp16 m
+# the default value for t in plot.py is 1.0, so need specifying
+python plot.py mt_bench llama38b2_40 h --t=0.0
+python plot.py mt_bench llama38b2_40 k --t=0.0
+python plot.py mt_bench llama38b2_40 m --t=0.0
 ```
 
 ## 🌟 Our Contributors
