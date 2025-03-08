@@ -294,7 +294,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--load-in-8bit", action="store_false", help="Use 8-bit quantization"
     )
-    parser.add_argument("--model-id", type=str, default="ess-vicuna-70b-fp16")
+    parser.add_argument("--model-id", type=str, default="vicuna-7b-fp16")
     parser.add_argument(
         "--bench-name",
         type=str,
