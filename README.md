@@ -241,6 +241,9 @@ python plot.py mt_bench vicuna-7b-fp16 m
 python plot.py mt_bench llama38b2_40 h --t=0.0
 python plot.py mt_bench llama38b2_40 k --t=0.0
 python plot.py mt_bench llama38b2_40 m --t=0.0
+python plot.py mt_bench qwen2-7b-bf16 h
+python plot.py mt_bench qwen2-7b-bf16 k
+python plot.py mt_bench qwen2-7b-bf16 m
 ```
 
 ## 🌟 Our Contributors
