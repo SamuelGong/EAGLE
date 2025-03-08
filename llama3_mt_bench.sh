@@ -23,4 +23,8 @@ python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGL
 python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGLE-LLaMA3-Instruct-8B --base-model-path=meta-llama/Meta-Llama-3-8B-Instruct --depth=5 --top-k=10 --total-token=50 &
 python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGLE-LLaMA3-Instruct-8B --base-model-path=meta-llama/Meta-Llama-3-8B-Instruct --depth=5 --top-k=10 --total-token=70 &
 python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGLE-LLaMA3-Instruct-8B --base-model-path=meta-llama/Meta-Llama-3-8B-Instruct --depth=5 --top-k=10 --total-token=80 &
+python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGLE-LLaMA3-Instruct-8B --base-model-path=meta-llama/Meta-Llama-3-8B-Instruct --depth=5 --top-k=10 --total-token=90 &
+python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGLE-LLaMA3-Instruct-8B --base-model-path=meta-llama/Meta-Llama-3-8B-Instruct --depth=5 --top-k=10 --total-token=110 &
+wait
+python -m eagle.evaluation.gen_ea_answer_llama3chat --ea-model-path=yuhuili/EAGLE-LLaMA3-Instruct-8B --base-model-path=meta-llama/Meta-Llama-3-8B-Instruct --depth=5 --top-k=10 --total-token=120 &
 wait

@@ -186,8 +186,6 @@ def get_model_answers(
             accept_lengths_list.append(accept_lengths)
             conv.messages[-1][-1] = output
     print('Warmup done')
-    print(f'{turns}')
-    exit(0)
 
     # questions=questions[6:]
     for question in tqdm(questions):
